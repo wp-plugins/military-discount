@@ -26,14 +26,15 @@ may be refunded. For more information on our billing policy, visit our
 <a href="https://businesses.gruntroll.com/pricing" target="_blank">pricing</a> page.
 </p>
 
-<b><u>Requirements:</b></u>
+**Requirements:**
 <ul>
+<li>United States only</li>
 <li><a href="https://wordpress.org/plugins/woocommerce">WooCommerce</a> plugin</li>
 <li>Coupons enabled (you may disable them in our Settings)</li>
 <li>Create an <a href="https://businesses.gruntroll.com/register" target="_blank">account</a></li>
 </ul>
 
-<b><u>Features include:</b></u>
+**Features include:**
 <ul>
 <li>Choose between Active Duty, Veterans, or both</li>
 <li>Choose exact discount amount: fixed dollar or percentage</li>
@@ -45,8 +46,8 @@ may be refunded. For more information on our billing policy, visit our
 <li>Option for the customer <a href="https://businesses.gruntroll.com/end-users">learn more</a> about the service before entering info</li>
 </ul>
 
-<p><b><u>How it works:</u></b></p>
-We don't maintain any personnel records on our server or yours. Instead, we have an 
+**How it works:**
+<p>We don't maintain any personnel records on our server or yours. Instead, we have an 
 exclusive API which is able to securely interact directly with live military
 personnel records ran by the Department of Defense. We take security very 
 seriously and encourage you to use SSL/TLS (https) 
