@@ -27,7 +27,6 @@ may be refunded. For more information on our billing policy, visit our
 <b><u>Requirements:</b></u>
 <ul>
 <li><a href="https://wordpress.org/plugins/woocommerce">WooCommerce</a> plugin</li>
-<li>PHP 5.3.2 (Released March 2010)</li>
 <li>Coupons enabled (you may disable them in our Settings)</li>
 <li>Create an <a href="https://businesses.gruntroll.com/register" target="_blank">account</a></li>
 </ul>
