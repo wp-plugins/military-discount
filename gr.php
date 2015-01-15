@@ -1,13 +1,14 @@
 <?php
 /**
  * @package Military Discount
- * @version 1.0
+ * @version 1.1
  */
 /*
 Plugin Name: Military Discount
+Plugin URI: https://wordpress.org/plugins/military-discount/
 Description: This WooCommerce plugin provides a military discount option for your checkout.
 Author: GruntRoll
-Version: 1.0
+Version: 1.1
 Author URI: http://businesses.gruntroll.com
 */
 

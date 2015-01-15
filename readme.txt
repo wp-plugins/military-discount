@@ -107,6 +107,10 @@ in order to avoid our tracking.
 
 == Changelog ==
 
+= 1.1 =
+* Added "Test Mode" for testing positive verification behavior
+* Military discount prompt at checkout now only shows when an Access Token is set
+
 = 1.0 =
 * Initial Release
 
