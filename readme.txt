@@ -12,17 +12,19 @@ Provides an optional military discount for your WooCommerce checkout.
 
 == Description ==
 
+Support the troops while driving sales and building customer loyalty
+
 <p>Install GruntRoll's Military Discount plugin alongside your WooCommerce plugin
 to begin offering your customers verified military and veteran discounts.</p>
 
-<p>This plugin is not free&#8212;you pay when you make money
+<p>After the 30-day/30-sale Free Trial, you only pay when you make money
 by positively identifying a military or veteran customer during the checkout
 process. Your customers who are positively identified but did not complete a sale
 may be refunded. For more information on our billing policy, visit our
 <a href="https://businesses.gruntroll.com/pricing" target="_blank">pricing</a> page.
 </p>
 
-Requirements:
+<b><u>Requirements:</b></u>
 <ul>
 <li><a href="https://wordpress.org/plugins/woocommerce">WooCommerce</a> plugin</li>
 <li>PHP 5.3.2 (Released March 2010)</li>
@@ -30,7 +32,7 @@ Requirements:
 <li>Create an <a href="https://businesses.gruntroll.com/register" target="_blank">account</a></li>
 </ul>
 
-Features include:
+<b><u>Features include:</b></u>
 <ul>
 <li>Choose between Active Duty, Veterans, or both</li>
 <li>Choose exact discount amount: fixed dollar or percentage</li>
@@ -39,10 +41,10 @@ Features include:
 <li>Customizable success message</li>
 <li>Customizable rejection message</li>
 <li>Option to display or hide reason for disqualification</li>
-<li>Option to learn more about the service before entering info</li>
+<li>Option for the customer <a href="https://businesses.gruntroll.com/end-users">learn more</a> about the service before entering info</li>
 </ul>
 
-<p><b>How it works:</b></p>
+<p><b><u>How it works:</u></b></p>
 We don't maintain any personnel records on our server or yours. Instead, we have an 
 exclusive API which is able to securely interact directly with live military
 personnel records ran by the Department of Defense. We take security very 
