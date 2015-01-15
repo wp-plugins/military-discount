@@ -8,11 +8,9 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Provides a military discount option for your WooCommerce checkout
+Provides an optional military discount for your WooCommerce checkout.
 
 == Description ==
-
-<p><b>Now for WooCommerce</b></p>
 
 <p>Install GruntRoll's Military Discount plugin alongside your WooCommerce plugin
 to begin offering your customers verified military and veteran discounts.</p>
@@ -26,10 +24,10 @@ may be refunded. For more information on our billing policy, visit our
 
 Requirements:
 <ul>
+<li><a href="https://wordpress.org/plugins/woocommerce">WooCommerce</a> plugin</li>
 <li>PHP 5.3.2 (Released March 2010)</li>
-<li>Coupons enabled in WooCommerce (you may disable them in our Settings)</li>
+<li>Coupons enabled (you may disable them in our Settings)</li>
 <li>Create an <a href="https://businesses.gruntroll.com/register" target="_blank">account</a></li>
-<li></li>
 </ul>
 
 Features include:
@@ -64,13 +62,12 @@ on all customer transactions.</p>
 
 = How does pricing work? =
 
-You only pay for what you use. When you use our service to verify military status and subsequently complete a transaction with your customer, you pay a flat commission of $2.00.
-Once a month, we'll send you an invoice with charges we recorded. If your records don't match ours, 
-you can contact us for an adjustment. We don't want to charge you for the use of our service 
-when it doesn't translate to an earned sale. Every 30 days, you'll receive an invoice
-at e-mail tied to your account. Invoices for WooCommerce are paid using PayPal, which does
-not require you to have an account. If there are no billable uses, you won't receive an
-invoice.
+You only pay for what you use. If you don't make money with our service, you don't pay.
+When you use our service to verify military status and subsequently complete a transaction 
+with your customer, you pay a flat commission of $2.00. Once a month, we'll send you an 
+invoice with your uses (payable online through PayPal). We don't want to charge you for 
+the use of our service when it doesn't translate to an earned sale. If there are no 
+billable uses, you won't receive an invoice.
 
 = Can you verify anyone other than military? =
 
@@ -97,14 +94,13 @@ this style to better suit your website.
 = May I alter code in the plugin? =
 
 If you're altering the code which doesn't affect billing or tracking,
-this is acceptable. However, if you're attempting to save/cache results so
-you can avoid our tracking, we will ban your server with or without notice. We
-pay for every verification you make, which means this is theft.
+this is fine. However, you are not permitted to save/cache verification results 
+in order to avoid our tracking.
 
 == Screenshots ==
 
-1. A working military discount verification process
-2. Military discount settings
+1. Default template of military discount during checkout. Input form reveals when clicked (as shown above).
+2. Settings menu accessed through Plugins page
 
 == Changelog ==
 
