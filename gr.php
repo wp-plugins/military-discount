@@ -93,6 +93,7 @@ class gruntroll{
         		update_option("gr_disable_coupons", "0");
         		update_option("gr_show_rejection_message", "1");
         		update_option("gr_show_learn_more", "0");
+        		update_option("gr_enable_testing", "0");
         	}
         	include 'gr_admin.php';
         }
@@ -121,11 +122,13 @@ class gruntroll{
         -Switch cartShown to true so other 
          methods know checkout page is loaded
         -Delete old military discount coupons
+        -Show form if Access Token is set
         *************************************/ 
         public function hook_before_checkout(){
                 $this->cartShown = true;
                 $this->deleteOld();
-                if (!$this->inCart()){
+                $at = get_option("gr_access_token");
+                if (!$this->inCart() && !empty($at)){
 		        include 'gr_form.php';
         	}
         }
@@ -166,35 +169,44 @@ class gruntroll{
                 }
                 
                 /**********************************
-                Perform request
-                **********************************/ 
-		$ch = curl_init();
-		$curlConfig = array(
-		    CURLOPT_URL            => "https://api.gruntroll.com",
-		    CURLOPT_POST           => true,
-		    CURLOPT_CONNECTTIMEOUT => 10,
-		    CURLOPT_TIMEOUT 	   => 30,
-		    CURLOPT_RETURNTRANSFER => true,
-		    CURLOPT_SSL_VERIFYPEER => true,
-		    CURLOPT_SSL_VERIFYHOST => 2,		    
-		    CURLOPT_POSTFIELDS     => array(
-			'access_token'  => get_option("gr_access_token"),
-			'name' 		=> $name,
-			'ssn' 		=> $ssn,
-			'year' 		=> $year
-		    )
-		);
+                Check for test mode
+                **********************************/
+                if (get_option('gr_enable_testing') == 1 && $ssn==0 && $name==0 && $year==2006){
+                	$result='{"isActive":"1","isVeteran":"1"}';
+                }
+                else{
+		        /**********************************
+		        Perform request
+		        **********************************/ 
+			$ch = curl_init();
+			$curlConfig = array(
+			    CURLOPT_URL            => "https://api.gruntroll.com",
+			    CURLOPT_POST           => true,
+			    CURLOPT_CONNECTTIMEOUT => 10,
+			    CURLOPT_TIMEOUT 	   => 30,
+			    CURLOPT_RETURNTRANSFER => true,
+			    CURLOPT_SSL_VERIFYPEER => true,
+			    CURLOPT_SSL_VERIFYHOST => 2,		    
+			    CURLOPT_POSTFIELDS     => array(
+				'access_token'  => get_option("gr_access_token"),
+				'name' 		=> $name,
+				'ssn' 		=> $ssn,
+				'year' 		=> $year
+			    )
+			);
 		
-		curl_setopt_array($ch, $curlConfig);
-		$result = curl_exec($ch);
-		$curl_errno = curl_errno($ch);
-		$curl_error = curl_error($ch);		
-		curl_close($ch);
-		$json = json_decode($result);
-                
+			curl_setopt_array($ch, $curlConfig);
+			$result = curl_exec($ch);
+			$curl_errno = curl_errno($ch);
+			$curl_error = curl_error($ch);		
+			curl_close($ch);
+                }
+
                 /**********************************
                 Handle Result
                 **********************************/
+		$json = json_decode($result);
+		
                 //CURL error
 		if ($curl_errno > 0) {
 			echo "cURL Error ($curl_errno): $curl_error\n";

@@ -48,9 +48,15 @@ if ($saved){
 	if ($v == 'on'){$v='1';}else{$v='0';}
 	update_option("gr_show_rejection_message", $v);	
 	
+	//Checkbox - show "learn more"
 	$v = $_POST['gr_show_learn_more'];
 	if ($v == 'on'){$v='1';}else{$v='0';}
-	update_option("gr_show_learn_more", $v);	
+	update_option("gr_show_learn_more", $v);
+	
+	//Checkbox - Test Mode
+	$v = $_POST['gr_enable_testing'];
+	if ($v == 'on'){$v='1';}else{$v='0';}
+	update_option("gr_enable_testing", $v);		
 }
 ?>
 
@@ -99,13 +105,21 @@ if ($saved){
 <table class="form-table">        
         <tr valign="top">
         <th scope="row">Access Token:</th>
-        <td><input size="20" type="text" name="gr_access_token" value="<?php echo get_option('gr_access_token') ; ?>" /></td>
+        <td><input size="20" type="text" name="gr_access_token" value="<?php echo get_option('gr_access_token') ; ?>" />
+        Must not be empty in order for checkout prompt to appear.</td>
         </tr> 
 
         <tr valign="top">
         <th scope="row">Disable regular coupons:</th>
         <td><input type="checkbox" name="gr_disable_coupons" <?php echo (get_option('gr_disable_coupons') =='1' ? 'checked="checked"' : ''); ?>></td>
-        </tr>               
+        </tr>
+        
+        <tr valign="top">
+        <th scope="row">Test Mode:</th>
+        <td><input type="checkbox" name="gr_enable_testing" <?php echo (get_option('gr_enable_testing') =='1' ? 'checked="checked"' : ''); ?>>
+        (Use <strong>0</strong> for SSN and Last Name. Use <strong>2006</strong> for Enlistment Year. This will simulate a positive Active Duty verification.)
+	</td>
+        </tr>
 </table>
 
 <h3>Display</h3>
