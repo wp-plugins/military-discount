@@ -53,12 +53,11 @@ on all customer transactions.</p>
 
 == Installation ==
 
-1. Upload `gruntroll` folder to the `/wp-content/plugins/` directory
+1. Upload unzipped `military-discount` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Create an account and retrieve your Access Token at https://businesses.gruntroll.com/register
 4. Paste your Access Token into the Access Token box in Military Discount Settings link (found in Plugins menu)
-5. Alter settings per your project requirements.
-6. Save settings.
+5. Save settings.
 
 == Frequently Asked Questions ==
 
@@ -77,15 +76,15 @@ No, we can only verify Active Duty military and Veterans.
 
 = Why is the price fixed? =
 
-The price is fixed in order to maintain a simple billing policy.
 We pay for every query, regardless of the result. You pay a flat rate for positive
 confirmation of an individual's military status. This way, you aren't eating the cost
-when you receive a negative result--instead, you pay a small fee when you complete a sale.
+when you receive a negative result&#8212;instead, you pay a small fee when you complete a sale.
+It feels pretty good to spend just a bit of money right after you made money.
 
 = Is there a minimum API usage I must meet? =
 
-There's no minimum API usage, and we don't automatically disable accounts for inactivity. Every
-30 days you'll receive an invoice by e-mail if you have billable uses.
+There's no minimum API usage, and we do not automatically disable accounts for inactivity. Every
+30 days you'll receive an invoice by e-mail (if you have billable uses).
 
 = Do I need a programmer/developer to integrate verification into my website? =
 No. Our plugin for WordPress/WooCommerce requires no additional effort on your
