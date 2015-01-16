@@ -8,16 +8,14 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Provides an optional military discount for your WooCommerce checkout.
+Support the troops while boosting sales by offering a military discount
 
 == Description ==
 
 <p>Military Discount plugin (by <a href="https://businesses.gruntroll.com">GruntRoll</a>)
-integrates with WooCommerce to offer your customers military and veteran discounts. All verification
-happens securely through our servers. When a positive verification is made,
-a discount (of your choice) is applied to your customer's cart.</p>
-
-<p>Support the troops while driving sales and building customer loyalty!</p>
+integrates with WooCommerce to offer your customers military and veteran discounts. Status verification
+processes securely through our service. When a positive verification is made,
+a discount of your choice is applied to your customer's cart.</p>
 
 <p>After the 30-day/30-sale Free Trial, you only pay when you make money
 by positively identifying a military or veteran customer during the checkout
