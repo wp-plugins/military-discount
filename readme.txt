@@ -12,7 +12,7 @@ Support the troops while boosting sales and building customer loyalty
 
 == Description ==
 
-<p>Military Discount plugin (by <a href="https://businesses.gruntroll.com">GruntRoll</a>)
+<p>The Military Discount plugin (by <a href="https://businesses.gruntroll.com">GruntRoll</a>)
 integrates with WooCommerce to offer your customers military and veteran discounts. Status verification
 processes securely through our service. When a positive verification is made,
 a discount of your choice is applied to your customer's cart.</p>
