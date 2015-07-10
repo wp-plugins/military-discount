@@ -24,9 +24,8 @@ not require your customers to enroll with GruntRoll, LLC. or its affiliates.</p>
 <ul>
 <li>Customer's Last Name & Date of Birth (entered at checkout)</li>
 <li><a href="https://wordpress.org/plugins/woocommerce">WooCommerce</a> plugin</li>
-<li>Create a <a href="https://www.mashape.com/register" target="_blank">Mashape account</a>
-and <a href="https://www.mashape.com/gruntroll/military-verification/pricing" target="_blank">select a plan</a></li>
-<li>Enable WooCommerce Coupons (you can disable them in our Settings)</li>
+<li>Create a <a href="https://www.mashape.com/register">Mashape account</a>
+and <a href="https://www.mashape.com/gruntroll/military-verification/pricing">select a plan</a></li>
 </ul>
 
 **Features include:**
@@ -48,13 +47,13 @@ a military discount. When clicked, a form expands requiring personal (yet
 non-sensitive) information. Upon submission, their information is scanned against our
 real-time database. If a match is made, a discount is applied!</p>
 
-**How we do this:**
+**How we do it:**
 <p>GruntRoll, LLC. is a DoD-licensed verifier of military personnel and takes
 security seriously. We don't store sensitive information. All information
 passed between networks occurs using industry-standard TLS.</p>
 
-<p>Our company has released this plugin and partners with Mashape for automated usage
-tracking and billing.</p>
+<p>Our company has partnered with <a href="https://www.mashape.com/gruntroll/military-verification">Mashape</a>
+for usage-tracking and billing.</p>
 
 **Got questions?**
 <p>sales@gruntroll.com</p>
@@ -63,16 +62,19 @@ tracking and billing.</p>
 
 1. Upload unzipped `military-discount` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. <a href="https://www.mashape.com/gruntroll/military-verification/pricing" target="_blank">Subscribe</a> to a plan and copy your X-Mashape-Key.
-4. Paste your X-Mashape-Key into the Access Token box in Military Discount Settings (found in WordPress Plugins menu).
+3. Make sure <a href="http://www.woothemes.com/woocommerce/" target="_blank">WooCommerce</a> is installed.
+4. Make sure coupons are Enabled in WooCommerce->Settings->Checkout.
+5. Create a <a href="https://www.mashape.com/register" target="_blank">Mashape</a> account and <a href="https://www.mashape.com/gruntroll/military-verification/pricing">subscribe</a> to a plan.
+6. Locate your `X-Mashape-Key` on <a href="https://www.mashape.com/gruntroll/military-verification">this page</a> (in the <b>Request Example</b> box).
+7. Paste your `X-Mashape-Key` into the Access Token box in Military Discount Settings (found in WordPress Plugins menu).
 5. Save settings.
 
 == Frequently Asked Questions ==
 
 = How much does it cost? =
 
-We have a variety of flexible pricing plans starting at $10 for low-volume retailers.
-We want to make it as affordable as possible, so we've integrated with Mashape to
+We have a variety of flexible pricing plans starting at $10.00 for low-volume retailers.
+We want to make it as affordable as possible, so we've integrated with <a href="https://www.mashape.com/gruntroll/military-verification">Mashape</a> to
 provide an abundance of retailer pricing plans. If you need a larger volume than 
 10,000/mo., please contact us at <b>sales@gruntroll.com</b>.
 
@@ -84,16 +86,15 @@ October 1st, 1985.
 = Is there a minimum API usage I must meet? =
 
 There's no minimum API usage, and we do not automatically disable accounts for inactivity.
-You'll simply need to maintain your account with <a href="https://www.mashape.com/gruntroll/military-verification/pricing" target="_blank">Mashape</a> in order to receive continued
+You'll simply need to maintain your account with <a href="https://www.mashape.com/gruntroll/military-verification/pricing">Mashape</a> in order to receive continued
 access to providing verified military discounts.
 
 = Are there any caveats I should know about? =
 
 For security purposes, we opted to alter our verification method (following Patch 1.2) by removing our
 requirement for Social Security number and instead requiring Date of Birth. The potential
-risk is a small potential for "false positive" results, though we find this to be a
-very rare occurrence. Additionally, it's a great benefit to remove the risks associated
-with allowing SSN to pass through your networks and ours.
+risk is a small potential for "false positive" results, though this is a
+very rare occurrence.
 
 = Do I need a programmer/developer to install this plugin? =
 No. By following the instructions in the Plugin Settings, you should be offering
@@ -113,7 +114,7 @@ in order to avoid your usage incrementing.
 == Changelog ==
 
 = 1.2 =
-* Integrated with <a href="https://www.mashape.com/gruntroll/military-verification/pricing" target="_blank">Mashape</a> for purposes of easier billing/tracking
+* Integrated with <a href="https://www.mashape.com/gruntroll/military-verification/pricing">Mashape</a> for purposes of easier billing/tracking
 * Removed the requirement for Social Security Number
 * Added ability to verify by Date of Birth
 
@@ -127,7 +128,7 @@ in order to avoid your usage incrementing.
 == Upgrade Notice ==
 
 = 1.2 =
-Existing customers will need to create a <a href="https://www.mashape.com/gruntroll/military-verification/pricing" target="_blank">Mashape</a> account and copy/paste the
+Existing customers will need to create a <a href="https://www.mashape.com/gruntroll/military-verification/pricing">Mashape</a> account and copy/paste the
 X-Mashape-Key provided. This will go in place of your current "Access Token".
 No other changes are required.
 
