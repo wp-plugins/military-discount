@@ -1,15 +1,15 @@
 <?php
 /**
  * @package Military Discount
- * @version 1.1
+ * @version 1.2
  */
 /*
 Plugin Name: Military Discount
 Plugin URI: https://wordpress.org/plugins/military-discount/
 Description: This WooCommerce plugin provides a military discount option for your checkout.
 Author: GruntRoll
-Version: 1.1
-Author URI: http://businesses.gruntroll.com
+Version: 1.2
+Author URI: https://gruntroll.com/business
 */
 
 
@@ -61,7 +61,6 @@ class gruntroll{
 			$settings_link = '<a href="admin.php?page=gruntroll.php">'.__("Settings", "gruntroll").'</a>';
 			array_unshift($links, $settings_link);
 		}
-		//$this->add_admin_page();
 		return $links;
         }
 
@@ -129,7 +128,8 @@ class gruntroll{
                 $this->cartShown = true;
                 $this->deleteOld();
                 $at = get_option("gr_access_token");
-                if (!$this->inCart() && !empty($at)){
+                $et = get_option("gr_enable_testing");
+                if (!$this->inCart() && (!empty($at) || !empty($et))){
 		        include 'gr_form.php';
         	}
         }
@@ -158,98 +158,128 @@ class gruntroll{
                 Get POST data
                 **********************************/
                 $name = $_POST['name'];
-                $ssn = $_POST['ssn'];
-                $year = $_POST['year'];
-                
+                $dob = $_POST['dob'];
+                $date = $_POST['date'];
+
                 /**********************************
                 Validate data (most happens on GR)
                 **********************************/
-                if (strlen($year) != 4){
-                	echo 'Invalid year.';
-                	die();
+                if (empty($_POST['name']) && $_POST['dob'] && $_POST['date']){
+                	die('Fill out the required information');
                 }
+                if (strlen($dob) != 10){
+                	die('Invalid DOB format');
+                }
+                if (strlen($name) < 2){
+                	die('Invalid name format');
+                }
+                if (strlen($date) != 10 && !empty($date)){
+                	die('Invalid date of service format');
+                }                        
                 
                 /**********************************
                 Check for test mode
                 **********************************/
-                if (get_option('gr_enable_testing') == 1 && $ssn==0 && $name==0 && $year==2006){
-                	$result='{"isActive":"1","isVeteran":"1"}';
+                if (get_option('gr_enable_testing') == 1){
+                        sleep(2);
+                	$result='{"request":"active","is_active":1,"is_veteran":1,"active_start":"01/01/2015","component":"Marine Corps Active Duty"}';
                 }
                 else{
 		        /**********************************
-		        Perform request
-		        **********************************/ 
-			$ch = curl_init();
-			$curlConfig = array(
-			    CURLOPT_URL            => "https://api.gruntroll.com",
-			    CURLOPT_POST           => true,
-			    CURLOPT_CONNECTTIMEOUT => 10,
-			    CURLOPT_TIMEOUT 	   => 30,
-			    CURLOPT_RETURNTRANSFER => true,
-			    CURLOPT_SSL_VERIFYPEER => true,
-			    CURLOPT_SSL_VERIFYHOST => 2,		    
-			    CURLOPT_POSTFIELDS     => array(
-				'access_token'  => get_option("gr_access_token"),
-				'name' 		=> $name,
-				'ssn' 		=> $ssn,
-				'year' 		=> $year
-			    )
-			);
-		
-			curl_setopt_array($ch, $curlConfig);
-			$result = curl_exec($ch);
-			$curl_errno = curl_errno($ch);
-			$curl_error = curl_error($ch);		
-			curl_close($ch);
+		        Ensure Access Token exists
+		        **********************************/
+                	$access_token = get_option("gr_access_token");
+                	if (strlen($access_token) > 1){
+                		
+				/**********************************
+				Create Data
+				**********************************/                 		
+                		if (!empty($date)){
+					$post_fields = array(
+						'dob' 		=> $dob,
+						'name' 		=> $name,
+						'date' 		=> $date
+				    	);
+                		}
+                		else{
+					$post_fields = array(
+						'dob' 		=> $dob,
+						'name' 		=> $name
+				    	);                		
+                		}
+                	
+				/**********************************
+				Perform request
+				**********************************/ 
+				$ch = curl_init();
+				$curlConfig = array(
+				    CURLOPT_URL            => "https://gruntroll-military-verification-v1.p.mashape.com/verify/active",
+				    CURLOPT_POST           => true,
+				    CURLOPT_CONNECTTIMEOUT => 10,
+				    CURLOPT_TIMEOUT 	   => 30,
+				    CURLOPT_RETURNTRANSFER => true,
+				    CURLOPT_SSL_VERIFYPEER => true,
+				    CURLOPT_SSL_VERIFYHOST => 2,
+				    CURLOPT_HTTPHEADER	   => array(
+				    	'X-Mashape-Key: ' . $access_token
+				    ),   
+				    CURLOPT_POSTFIELDS     => $post_fields
+				);
+				curl_setopt_array($ch, $curlConfig);
+				$result = curl_exec($ch);
+				$curl_errno = curl_errno($ch);
+				$curl_error = curl_error($ch);		
+				curl_close($ch);
+                	}
+                	else{
+                		die('Access Token does not exist.');
+                		
+                	}
                 }
 
                 /**********************************
                 Handle Result
                 **********************************/
 		$json = json_decode($result);
-		
+
                 //CURL error
 		if ($curl_errno > 0) {
-			echo "cURL Error ($curl_errno): $curl_error\n";
-			die();
+			die("cURL Error ($curl_errno): $curl_error\n");
 		}
 		//GruntRoll error	
 		if (isset($json->error)){
-			echo $json->message;
-			die();
+			die($json->message);
 		}
 		//If eligible, apply discount
-		if ($json->isActive){
+		if ($json->is_active){
 			$this->apply();
-			echo '1';
-			die();
+			die('1');
 		}
-		else if ($json->isVeteran){
+		else if ($json->is_veteran){
 			if (get_option("gr_eligibility") == "1,0"){
-				echo 'Discount is for Active Duty only';
-				die();
+				die('Discount is for Active Duty only');
 			}
 			else{
 				$this->apply();
-				echo '1';
-				die();			
+				die('1');		
 			}
 		}
+		else if ($json->message){
+			die($json->message);
+		}
 		else{
-			echo 'Servicemember not found';
-			die();
+			die('Servicemember not found');
 		}
 		
                 //Default response
-                echo 'Unable to verify';
-		die();
+                die('Unable to verify');
         }
         
         /*************************************
         Hook: wp_footer
         -Load JS without additional file DL
         (This is a small JS chunk)
-        *************************************/ 
+        *************************************/
         public function hook_footer(){
                 if ($this->cartShown){
                 	include 'gr_js.php';

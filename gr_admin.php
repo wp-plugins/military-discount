@@ -2,7 +2,7 @@
 $saved = false;
 //Access token
 if (isset($_POST['gr_access_token'])){
-	update_option("gr_access_token", $_POST['gr_access_token']);
+	update_option("gr_access_token", trim($_POST['gr_access_token']));
 	$saved = true;
 }
 //Discount prompt
@@ -61,21 +61,23 @@ if ($saved){
 ?>
 
 <div class="wrap">
-<h1>WooCommerce Military Discount (by GruntRoll)</h1>
+<h1>Military Discount Option at Checkout</h1>
 
 <?php
 if (!get_option("gr_access_token")){
 	?>
 	<hr>
-	<h3>Getting started</h3>
+	<h3>Setup</h3>
 	<ol>
 		<li>Make sure <a href="http://www.woothemes.com/woocommerce/" target="_blank">WooCommerce</a> is installed.</li>
 		<li>Make sure coupons are Enabled in 
 		<a href="/wp-admin/admin.php?page=wc-settings&tab=checkout">WooCommerce->Settings->Checkout</a>.</li>
-		<li><a href="http://businesses.gruntroll.com/register" target="_blank">Create a GruntRoll business account</a>.</li>
-		<li>Copy your private access token from the GruntRoll account page 
-		and paste it into settings below.</li>
-		<li>Save settings at the bottom of this page. You're done! Users can now redeem verified military discounts during checkout.</li>
+		<li>Create a <a href="https://www.mashape.com/register" target="_blank">Mashape</a> account.</li>
+		<li>Choose a <a href="https://www.mashape.com/gruntroll/military-verification/pricing" target="_blank">pricing plan</a> and <b>Subscribe</b> to it.</li>
+		<li>Locate your <b>X-Mashape-Key</b> on <a href="https://www.mashape.com/gruntroll/military-verification" target="_blank">this page</a> (in the <b>Request Example</b> box).</li>
+		<li>Paste your <b>X-Mashape-Key</b> value into the box below.
+		<br>Example: Lps0y6eqSOms5HB8e27FPQaZ34jnV1zw6jwjsSpJ3JmW8aSwpZ</li>
+		<li>Save settings.</li>
 	</ol>
 	<hr>
 	<?php
@@ -83,15 +85,15 @@ if (!get_option("gr_access_token")){
 else{
 	?>
 	<hr>
-	You may view your usage and upcoming bill by
-	<a href="http://businesses.gruntroll.com/login" target="_blank">logging in</a>
-	to GruntRoll.
+	You can view your usage by logging into
+	<a href="https://www.mashape.com/login" target="_blank">Mashape</a>.
+        <br>Contact us: sales@gruntroll.com
 	<hr>
 	<?php
 }
 
 if ($saved){
-	echo '<div id="message" class="updated fade"><p><strong>Your settings have been saved.</strong></p></div>';
+	echo '<div id="message" class="updated fade"><p><b>Your settings have been saved.</b></p></div>';
 }
 	
 ?>
@@ -100,47 +102,68 @@ if ($saved){
 
 <form method="post" action="admin.php?page=gruntroll.php">
 
-<h3>Basic</h3>
+<h3>Connection Settings</h3>
 
-<table class="form-table">        
-        <tr valign="top">
-        <th scope="row">Access Token:</th>
-        <td><input size="20" type="text" name="gr_access_token" value="<?php echo get_option('gr_access_token') ; ?>" />
-        Must not be empty in order for checkout prompt to appear.</td>
-        </tr> 
+<table class="form-table">
 
         <tr valign="top">
-        <th scope="row">Disable regular coupons:</th>
-        <td><input type="checkbox" name="gr_disable_coupons" <?php echo (get_option('gr_disable_coupons') =='1' ? 'checked="checked"' : ''); ?>></td>
+        <th scope="row">X-Mashape-Key:</th>
+        <td>
+                <input size="50" type="text" name="gr_access_token" value="<?php echo get_option('gr_access_token') ; ?>" />
+        </td>
+        </tr>
+             
+        <tr valign="top">
+        <th scope="row">Use SSL</th>
+        <td>
+                <input type="checkbox" checked disabled>
+        </td>
+        </tr>        
+        
+</table>
+
+<hr>
+
+<h3>General Settings</h3>
+<table class="form-table">
+
+        <tr valign="top">
+        <th scope="row">Disable WC Coupons:</th>
+        <td><input type="checkbox" name="gr_disable_coupons" <?php echo (get_option('gr_disable_coupons') =='1' ? 'checked="checked"' : ''); ?>>
+        WooCommerce Coupons must be enabled. You may disable them here.
+        </td>
         </tr>
         
         <tr valign="top">
         <th scope="row">Test Mode:</th>
         <td><input type="checkbox" name="gr_enable_testing" <?php echo (get_option('gr_enable_testing') =='1' ? 'checked="checked"' : ''); ?>>
-        (Use <strong>0</strong> for SSN and Last Name. Use <strong>2006</strong> for Enlistment Year. This will simulate a positive Active Duty verification.)
+	Emulates positive verification regardless of data submitted.
 	</td>
         </tr>
+        
 </table>
 
-<h3>Display</h3>
+<hr>
+
+<h3>Display Settings</h3>
 <table class="form-table">        
         <tr valign="top">
-        <th scope="row">Discount prompt:</th>
+        <th scope="row">Discount Prompt:</th>
         <td><input type="text" size="60" name="gr_discount_prompt" value="<?php echo stripslashes( get_option('gr_discount_prompt') ); ?>" /></td>
         </tr>
 
         <tr valign="top">
-        <th scope="row">Success message:</th>
+        <th scope="row">Success Message:</th>
         <td><input type="text" size="60" name="gr_success_message" value="<?php echo stripslashes( get_option('gr_success_message') ); ?>" /></td>
         </tr>
         
         <tr valign="top">
-        <th scope="row">Rejection message:</th>
+        <th scope="row">Rejection Message:</th>
         <td><input type="text" size="60" name="gr_rejection_message" value="<?php echo stripslashes( get_option('gr_rejection_message') ); ?>" /></td>
         </tr>
         
         <tr valign="top">
-        <th scope="row">Rejection reason:</th>
+        <th scope="row">Show Rejection Reason:</th>
         <td>
        	<input type="checkbox" name="gr_show_rejection_message" <?php echo (get_option('gr_show_rejection_message') =='1' ? 'checked="checked"' : ''); ?>>
         </td>
@@ -150,12 +173,14 @@ if ($saved){
         <th scope="row">"Learn more":</th>
         <td>
        	<input type="checkbox" name="gr_show_learn_more" <?php echo (get_option('gr_show_learn_more') =='1' ? 'checked="checked"' : ''); ?>>
-        <strong>Note:</strong>&nbsp;Enabling this creates assurance for your customers.
+       	<b>Note:</b> Enabling a "Learn More" link creates extra assurance for your customers.
         </td>
         </tr>        
 </table>
 
-<h3>Discount Options</h3>
+<hr>
+
+<h3>Discount Settings</h3>
 <table class="form-table">
         <tr valign="top">
         <th scope="row">Eligibility:</th>
@@ -181,7 +206,7 @@ if ($saved){
         <th scope="row">Amount (number):</th>
         <td>
 		<input type="text" size="5" name="gr_amount" value="<?php echo esc_attr( get_option('gr_amount') ); ?>" />       
-        	<strong>Good:</strong> 5, 10, 20. <strong>Bad:</strong> 5%, $10, 20 percent.
+        	<b>Good Examples:</b> 5, 10, 20. <b>Bad Examples:</b> 5%, $10, 20 percent.
         </td>        
         </tr>
 </table>

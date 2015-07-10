@@ -11,9 +11,9 @@ jQuery('#grbtn').on('click', function(event){
                 url: "/wp-admin/admin-ajax.php",
                 data: {
                         action: "grverify",
-                        name: jQuery('#grname').val(),
-                        ssn:  jQuery('#grssn').val(),
-                        year: jQuery('#gryear').val()
+                        name: jQuery('#gr_name').val(),
+                        dob:  jQuery('#gr_dob').val(),
+                        date: jQuery('#gr_date').val()
                 },
                 timeout:5000,
                 error: function(){
