@@ -24,8 +24,7 @@ not require your customers to enroll with GruntRoll, LLC. or its affiliates.</p>
 <ul>
 <li>Customer's Last Name & Date of Birth (entered at checkout)</li>
 <li><a href="https://wordpress.org/plugins/woocommerce">WooCommerce</a> plugin</li>
-<li>Create a <a href="https://www.mashape.com/register">Mashape account</a>
-and <a href="https://www.mashape.com/gruntroll/military-verification/pricing">select a plan</a></li>
+<li>Subscribe to a <a href="https://www.mashape.com/gruntroll/military-verification/pricing">plan</a> and copy/paste an access token</li>
 </ul>
 
 **Features include:**
