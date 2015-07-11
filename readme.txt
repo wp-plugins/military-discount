@@ -29,15 +29,14 @@ not require your customers to enroll with GruntRoll, LLC. or its affiliates.</p>
 
 **Features include:**
 <ul>
-<li>Choose between Active Duty & Veterans or just Active Duty</li>
+<li>Test Mode: Sample the plugin before you subscribe</li>
+<li>Choose Active Duty & Veterans, or just Active Duty</li>
 <li>Choose exact discount amount: fixed dollar or percentage</li>
 <li>Option to disable standard coupons</li>
-<li>Test Mode: Sample the plugin before you buy</li>
-<li>Customizable prompt message</li>
+<li>Customizable prompt, success and rejection message</li>
 <li>Customizable success message</li>
-<li>Customizable rejection message</li>
-<li>Option to display or hide reason for disqualification</li>
-<li>Option for the customer to learn more about the service before entering info</li>
+<li>Option to display or hide rejection message</li>
+<li>Allow the customer to learn more about the service before entering info</li>
 </ul>
 
 **How it works:**
