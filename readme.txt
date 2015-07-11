@@ -51,9 +51,6 @@ real-time database. If a match is made, a discount is applied!</p>
 security seriously. We don't store sensitive information. All information
 passed between networks occurs using industry-standard TLS.</p>
 
-<p>Our company has partnered with <a href="https://www.mashape.com/gruntroll/military-verification">Mashape</a>
-for usage-tracking and billing.</p>
-
 **Got questions?**
 <p>sales@gruntroll.com</p>
 
